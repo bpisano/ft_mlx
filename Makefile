@@ -18,11 +18,14 @@ MLX = ./mlx/libmlx.a
 SRC = ml_point.c			\
 	  ml_size.c				\
 	  ml_frame.c			\
+	  ml_size.c				\
+	  ml_grid.c				\
 	  ml_view.c				\
 	  ml_init.c				\
 	  ml_display_window.c	\
 	  ml_fill_pixel.c		\
 	  ml_draw_rect.c		\
+	  ml_draw_grid.c		\
 
 OBJECTS = $(SRC:.c=.o)
 
