@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/27 12:47:23 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/04/27 13:35:23 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/27 15:41:59 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,8 +18,10 @@ MLX = ./mlx/libmlx.a
 SRC = ml_point.c			\
 	  ml_size.c				\
 	  ml_frame.c			\
+	  ml_view.c				\
 	  ml_init.c				\
 	  ml_display_window.c	\
+	  ml_draw_rect.c		\
 
 OBJECTS = $(SRC:.c=.o)
 
@@ -42,7 +44,7 @@ $(MLX):
 
 $(NAME): $(MLX) $(OBJECTS)
 	@cp $(MLX) $(NAME)
-	@ar rc $(NAME) $(OBJECTS)
+	@ar rc $(NAME) $(OBJECTS) 
 	@echo "$(BLUE)$(NAME)\033[500D\033[42C$(GREEN)[DONE]$(END)"
 
 %.o : %.c
