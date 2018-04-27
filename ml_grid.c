@@ -6,6 +6,6 @@ t_grid	grid(size_t row, size_t column, size_t spacing)
 
 	g.row = row;
 	g.column = column;
-	g.spacing = spacing;
+	g.space = spacing;
 	return (g);
 }

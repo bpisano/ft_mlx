@@ -41,7 +41,7 @@ typedef struct		s_grid
 {
 	int				row;
 	int				column;
-	int				spacing;
+	int				space;
 }					t_grid;
 
 typedef struct		s_view

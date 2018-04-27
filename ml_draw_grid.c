@@ -6,8 +6,8 @@ t_size	rect_size(t_frame f, t_grid g)
 	int		width;
 	int		height;
 
-	width = (f.size.width - g.spacing * (g.column - 1)) / g.column;
-	height = (f.size.height - g.spacing * (g.row - 1)) / g.row;
+	width = (f.size.width - g.space * (g.column - 1)) / g.column;
+	height = (f.size.height - g.space * (g.row - 1)) / g.row;
 	return size(width, height);
 }
 
@@ -21,21 +21,17 @@ void	draw_grid_color(t_frame f, t_grid g, int color)
 	int		x;
 	int		y;
 	t_point	pos;
-	t_size	r_size;
-	t_view	v;
+	t_size	r_s;
 
-	v = view(f);
-	v.color = color;
-	r_size = rect_size(f, g);
+	r_s = rect_size(f, g);
 	y = -1;
 	while (++y < g.row)
 	{
 		x = -1;
 		while (++x < g.column)
 		{
-			pos = point((g.column + g.spacing) * x, (g.row + g.spacing) * y);
-			draw_rect_color(frame(pos, r_size), color);
+			pos = point((r_s.width + g.space) * x, (r_s.height + g.space) * y);
+			draw_rect_color(frame(pos, r_s), color);
 		}
 	}
-	mlx_put_image_to_window(win.mlx, win.view, v.img, f.origin.x, f.origin.y);
 }
