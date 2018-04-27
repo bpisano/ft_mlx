@@ -21,6 +21,7 @@ SRC = ml_point.c			\
 	  ml_view.c				\
 	  ml_init.c				\
 	  ml_display_window.c	\
+	  ml_fill_pixel.c		\
 	  ml_draw_rect.c		\
 
 OBJECTS = $(SRC:.c=.o)

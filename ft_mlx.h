@@ -39,7 +39,7 @@ typedef struct		s_frame
 typedef struct		s_view
 {
 	void			*img;
-	void			*img_data;
+	char			*img_data;
 	int				bpp;
 	struct s_frame	frame;
 	int				color;	
@@ -59,9 +59,10 @@ t_size				size(int width, int height);
 t_frame				frame(t_point p, t_size s);
 t_view				view(t_frame f);
 
-int					draw_pixel(t_point p);
-int					draw_rect(t_frame frame);
-int					draw_line(t_point p1, t_point p2);
+void				fill_pixel(t_view, t_point p, int color);
+void				draw_rect(t_frame f);
+void				draw_rect_color(t_frame f, int color);
+void				draw_line(t_point p1, t_point p2);
 
 int					ml_init(t_size win_size, char *title);
 void				ml_display_window(void);

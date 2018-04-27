@@ -13,24 +13,25 @@
 
 #include "ft_mlx.h"
 
-void	fill_pixel(t_view v, int x, int y)
+void	draw_rect(t_frame f)
 {
-	*(int *)(v.img_data + (y * win.size.width + x) * v.bpp) = v.color;
+	draw_rect_color(f, RGB(255, 255, 255));
 }
 
-int		draw_rect(t_frame f)
+void	draw_rect_color(t_frame f, int color)
 {
 	int		x;
 	int		y;
 	t_view	v;
 
 	v = view(f);
+	v.color = color;
 	y = -1;
 	while (++y < v.frame.size.height)
 	{
 		x = -1;
 		while (++x < v.frame.size.width)
-			fill_pixel(v, x, y);
+			fill_pixel(v, point(x, y), v.color);
 	}
-	return (1);
+	mlx_put_image_to_window(win.mlx, win.view, v.img, f.origin.x, f.origin.y);
 }
