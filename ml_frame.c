@@ -13,7 +13,7 @@
 
 #include "ft_mlx.h"
 
-t_frame	frame(t_point p, t_size s)
+t_frame		frame(t_point p, t_size s)
 {
 	t_frame	f;
 

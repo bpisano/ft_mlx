@@ -24,5 +24,6 @@ t_view	view(t_frame f)
 	v.bpp /= 8;
 	v.frame = f;
 	v.color = RGB(255, 255, 255);
+	ar_init(&(v.childs), 0);
 	return (v);
 }

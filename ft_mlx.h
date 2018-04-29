@@ -15,9 +15,12 @@
 # define FT_MLX_H
 
 # include "mlx.h"
+# include "ft_array.h"
 # include <stdlib.h>
 
 # define RGB(r, g, b) (256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
+# define COLOR 0
+# define FRAME 1
 
 typedef struct		s_point
 {
@@ -37,42 +40,35 @@ typedef struct		s_frame
 	struct s_size	size;
 }					t_frame;
 
-typedef struct		s_grid
-{
-	int				row;
-	int				column;
-	int				space;
-}					t_grid;
-
 typedef struct		s_view
 {
 	void			*img;
 	char			*img_data;
 	int				bpp;
+	t_array			childs;
 	struct s_frame	frame;
-	int				color;	
+	int				color;
 }					t_view;
 
 typedef struct		s_win
 {
 	void			*mlx;
-	void			*view;
-	struct s_size	size;
+	void			*current;
+	struct s_view	view;
 }					t_win;
 
-struct s_win		win;
+t_win				win;
 
 t_point				point(int x, int y);
 t_size				size(int width, int height);
 t_frame				frame(t_point p, t_size s);
-t_grid				grid(size_t row,size_t column, size_t spacing);
 t_view				view(t_frame f);
+t_view				view_attr(t_frame f, int ac, ...);
+
+void				ml_add_child(t_view view, t_view child);
 
 void				fill_pixel(t_view, t_point p, int color);
 void				draw_rect(t_frame f);
-void				draw_rect_color(t_frame f, int color);
-void				draw_grid(t_frame f, t_grid g);
-void				draw_grid_color(t_frame f, t_grid g, int color);
 
 int					ml_init(t_size win_size, char *title);
 void				ml_display_window(void);

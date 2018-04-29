@@ -15,17 +15,11 @@
 
 void	draw_rect(t_frame f)
 {
-	draw_rect_color(f, RGB(255, 255, 255));
-}
-
-void	draw_rect_color(t_frame f, int color)
-{
 	int		x;
 	int		y;
 	t_view	v;
 
 	v = view(f);
-	v.color = color;
 	y = -1;
 	while (++y < v.frame.size.height)
 	{
@@ -33,5 +27,6 @@ void	draw_rect_color(t_frame f, int color)
 		while (++x < v.frame.size.width)
 			fill_pixel(v, point(x, y), v.color);
 	}
-	mlx_put_image_to_window(win.mlx, win.view, v.img, f.origin.x, f.origin.y);
+	ml_add_child(win.view, v);
+	mlx_put_image_to_window(win.mlx, win.current, v.img, f.origin.x, f.origin.y);
 }

@@ -16,13 +16,11 @@
 int		ml_init(t_size win_size, char *title)
 {
 	void	*mlx;
-	t_win	w;
 
 	if (!(mlx = mlx_init()))
 		return (0);
-	w.mlx = mlx;
-	w.view = mlx_new_window(mlx, win_size.width, win_size.height, title);
-	w.size = win_size;
-	win = w;
+	win.mlx = mlx;
+	win.current = mlx_new_window(win.mlx, win_size.width, win_size.height, title);
+	win.view = view(frame(point(0, 0), win_size));
 	return (1);
 }

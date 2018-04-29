@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ml_size.c                                        .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/04/27 13:33:34 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/27 13:35:06 by bpisano     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "ft_mlx.h"
 
-t_grid	grid(size_t row, size_t column, size_t spacing)
+t_size	size(int width, int height)
 {
-	t_grid	g;
+	t_size	s;
 
-	g.row = row;
-	g.column = column;
-	g.space = spacing;
-	return (g);
+	s.width = width;
+	s.height = height;
+	return (s);
 }
