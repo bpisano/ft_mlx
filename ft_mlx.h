@@ -72,7 +72,6 @@ t_view				ml_view(t_frame f, int color);
 t_view				ml_rect(t_frame f, int color);
 void				ml_draw_rect(t_frame f, int color);
 
-
 int					ml_init(t_size win_size, char *title);
 void				ml_display_window(void);
 
