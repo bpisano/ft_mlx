@@ -13,7 +13,7 @@
 
 #include "ft_mlx.h"
 
-t_view	view(t_frame f)
+t_view	ml_view(t_frame f, int color)
 {
 	int		size_line;
 	int		endian;
@@ -23,7 +23,6 @@ t_view	view(t_frame f)
 	v.img_data = mlx_get_data_addr(v.img, &(v.bpp), &size_line, &endian);
 	v.bpp /= 8;
 	v.frame = f;
-	v.color = RGB(255, 255, 255);
-	ar_init(&(v.childs), 0);
+	v.color = color;
 	return (v);
 }

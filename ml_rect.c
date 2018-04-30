@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ml_init.c                                        .::    .:/ .      .::   */
+/*   ml_rect.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/04/27 13:13:01 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/27 13:42:49 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/27 15:28:24 by bpisano      #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/27 15:47:06 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int		ml_init(t_size win_size, char *title)
+t_view	ml_rect(t_frame f, int color)
 {
-	void	*mlx;
+	int		x;
+	int		y;
+	t_view	v;
 
-	if (!(mlx = mlx_init()))
-		return (0);
-	win.mlx = mlx;
-	win.current = mlx_new_window(win.mlx, win_size.width, win_size.height, title);
-	ar_init(&(win.views), 0);
-	return (1);
+	v = ml_view(f, color);
+	y = -1;
+	while (++y < v.frame.size.height)
+	{
+		x = -1;
+		while (++x < v.frame.size.width)
+			ml_fill_pixel(v, point(x, y), v.color);
+	}
+	return (v);
 }

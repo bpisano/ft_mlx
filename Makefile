@@ -17,20 +17,25 @@ MLX = ./mlx/libmlx.a
 
 ARRAY = ./ft_array/libarray.a
 
+LIBFT = ./libft/libft.a
+
 SRC = ml_init.c				\
 	  ml_display_window.c	\
-	  ml_add_child.c		\
+	  ml_draw_view.c		\
+	  ml_clear_view.c		\
 	  ml_point.c			\
 	  ml_size.c				\
 	  ml_frame.c			\
-	  ml_view.c				\
 	  ml_fill_pixel.c		\
+	  ml_view.c				\
+	  ml_rect.c				\
 	  ml_draw_rect.c		\
 
 OBJECTS = $(SRC:.c=.o)
 
 HEADS = -I ./					\
 		-I ./mlx				\
+		-I ./libft/includes		\
 		-I ./ft_array			\
 
 FLAGS = -Wall -Werror -Wextra
@@ -47,11 +52,14 @@ $(MLX):
 	@make -C mlx
 	@echo "$(BLUE)mlx\033[500D\033[42C$(GREEN)[DONE]$(END)"
 
+$(LIBFT):
+	@make -C libft
+
 $(ARRAY):
 	@make -C ft_array
 
-$(NAME): $(MLX) $(ARRAY) $(OBJECTS)
-	@libtool -o $(NAME) $(OBJECTS) $(MLX) $(ARRAY)
+$(NAME): $(MLX) $(LIBFT) $(ARRAY) $(OBJECTS)
+	@libtool -o $(NAME) $(OBJECTS) $(MLX) $(LIBFT) $(ARRAY)
 	@echo "$(BLUE)$(NAME)\033[500D\033[42C$(GREEN)[DONE]$(END)"
 
 %.o : %.c
@@ -61,10 +69,12 @@ $(NAME): $(MLX) $(ARRAY) $(OBJECTS)
 
 clean:
 	@make clean -C mlx
+	@make clean -C libft
 	@make clean -C ft_array
 	@rm -f $(OBJECTS)
 
 fclean: clean
+	@make fclean -C libft
 	@make fclean -C ft_array
 	@rm -f $(NAME)
 
